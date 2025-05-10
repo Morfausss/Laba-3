@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+
+class Vector {
+private:
+    std::vector<double> data;
+
+public:
+    Vector(const std::vector<double>& values) {
+        data = values;
+    }
+
+    Vector add(const Vector& other) {
+        std::vector<double> result;
+        for (size_t i = 0; i < data.size(); ++i) {
+            result.push_back(data[i] + other.data[i]);
+        }
+        return Vector(result);
+    }
+
+    Vector subtract(const Vector& other) {
+        std::vector<double> result;
+        for (size_t i = 0; i < data.size(); ++i) {
+            result.push_back(data[i] - other.data[i]);
+        }
+        return Vector(result);
+    }
+
+    Vector multiply(const Vector& other) {
+        std::vector<double> result;
+        for (size_t i = 0; i < data.size(); ++i) {
+            result.push_back(data[i] * other.data[i]);
+        }
+        return Vector(result);
+    }
+
+    double dotProduct(const Vector& other) {
+        double result = 0;
+        for (size_t i = 0; i < data.size(); ++i) {
+            result += data[i] * other.data[i];
+        }
+        return result;
+    }
+
+    void print() const {
+        std::cout << "[";
+        for (size_t i = 0; i < data.size(); ++i) {
+            std::cout << data[i];
+            if (i < data.size() - 1)
+                std::cout << ", ";
+        }
+        std::cout << "]" << std::endl;
+    }
+};
+
+int main() {
+    Vector v1({1.0, 2.0, 3.0});
+    Vector v2({4.0, 5.0, 6.0});
+
+    std::cout << "Vector 1: ";
+    v1.print();
+    std::cout << "Vector 2: ";
+    v2.print();
+
+    Vector sum = v1.add(v2);
+    Vector diff = v1.subtract(v2);
+    Vector prod = v1.multiply(v2);
+    double dot = v1.dotProduct(v2);
+
+    std::cout << "Sum: ";
+    sum.print();
+    std::cout << "Difference: ";
+    diff.print();
+    std::cout << "Product: ";
+    prod.print();
+    std::cout << "skaliarnyj product: " << dot << std::endl;
+
+    return 0;
+}
