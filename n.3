@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+
+class ElectronicDevice {
+protected:
+    std::string name;
+    double screenSize;
+
+public:
+    ElectronicDevice(const std::string& n, double size) : name(n), screenSize(size) {}
+
+    std::string getName() const {
+        return name;
+    }
+
+    double getScreenSize() const {
+        return screenSize;
+    }
+};
+
+class Smartphone : public ElectronicDevice {
+private:
+    std::string os;
+
+public:
+    Smartphone(const std::string& n, double size, const std::string& operatingSystem)
+        : ElectronicDevice(n, size), os(operatingSystem) {}
+
+    void setOS(const std::string& operatingSystem) {
+        os = operatingSystem;
+    }
+
+    std::string getOS() const {
+        return os;
+    }
+};
+
+class Tablet : public ElectronicDevice {
+private:
+    bool hasStylus;
+
+public:
+    Tablet(const std::string& n, double size, bool stylus)
+        : ElectronicDevice(n, size), hasStylus(stylus) {}
+
+    void setStylus(bool stylus) {
+        hasStylus = stylus;
+    }
+
+    bool getStylus() const {
+        return hasStylus;
+    }
+};
+
+class Laptop : public ElectronicDevice {
+private:
+    int batteryLife;
+
+public:
+    Laptop(const std::string& n, double size, int battery)
+        : ElectronicDevice(n, size), batteryLife(battery) {}
+
+    void setbatterylife(int battery) {
+        batteryLife = battery;
+    }
+
+    int getbatterylife() const {
+        return batteryLife;
+    }
+};
+
+int main() {
+    Smartphone smartphone("iPhone X max pox fox", 6.1, "iOS");
+    Tablet tablet("iPad Pro", 12.9, true);
+    Laptop laptop("Lenovo legion 5 pro", 16.5, 15);
+
+    std::cout << "Smartphone: " << smartphone.getName() << ", Screen: " << smartphone.getScreenSize()
+              << " inches, OS: " << smartphone.getOS() << std::endl;
+    std::cout << "Tablet: " << tablet.getName() << ", Screen: " << tablet.getScreenSize()
+              << " inches, Stylus: " << (tablet.getStylus() ? "Yes" : "No") << std::endl;
+    std::cout << "Laptop: " << laptop.getName() << ", Screen: " << laptop.getScreenSize()
+              << " inches, Battery Life: " << laptop.getbatterylife() << " hours" << std::endl;
+
+    return 0;
+}
