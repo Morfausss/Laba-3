@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+
+class Vehicle {
+protected:
+    double speed;
+    double enginePower;
+
+public:
+    Vehicle(double s, double p) {
+        speed = s;
+        enginePower = p;
+    }
+
+    double getSpeed() const {
+        return speed;
+    }
+
+    double getEnginePower() const {
+        return enginePower;
+    }
+};
+
+class Car : public Vehicle {
+private:
+    int numberOfSeats;
+
+public:
+    Car(double s, double p, int seats) : Vehicle(s, p), numberOfSeats(seats) {}
+
+    int getNumberOfSeats() const {
+        return numberOfSeats;
+    }
+};
+
+class Truck : public Vehicle {
+private:
+    double loadCapacity;
+
+public:
+    Truck(double s, double p, double capacity) : Vehicle(s, p), loadCapacity(capacity) {}
+
+    double getMaxLoad() const {
+        return loadCapacity;
+    }
+};
+
+class Motorcycle : public Vehicle {
+private:
+    bool hasSidecar;
+
+public:
+    Motorcycle(double s, double p, bool sidecar) : Vehicle(s, p), hasSidecar(sidecar) {}
+
+    std::string getType() const {
+        return hasSidecar ? "Motorcycle with sidecar" : "Solo motorcycle";
+    }
+};
+
+int main() {
+    Car car(180.0, 150.0, 5);
+    Truck truck(120.0, 300.0, 10000.0); // max load in kg
+    Motorcycle moto(200.0, 100.0, false);
+
+    std::cout << "Car Speed: " << car.getSpeed() << " km/h, Engine: " << car.getEnginePower()
+              << " HP, Seats: " << car.getNumberOfSeats() << std::endl;
+
+    std::cout << "Truck Speed: " << truck.getSpeed() << " km/h, Engine: " << truck.getEnginePower()
+              << " HP, Max Load: " << truck.getMaxLoad() << " kg" << std::endl;
+
+    std::cout << "Motorcycle Speed: " << moto.getSpeed() << " km/h, Engine: " << moto.getEnginePower()
+              << " HP, Type: " << moto.getType() << std::endl;
+
+    return 0;
+}
