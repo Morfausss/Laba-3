@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+
+class Student {
+private:
+    std::string name;
+    int age;
+    double averageGrade;
+
+public:
+    void setName(const std::string& newName) {
+        name = newName;
+    }
+
+    void setAge(int newAge) {
+        age = newAge;
+    }
+
+    void setAverageGrade(double newGrade) {
+        averageGrade = newGrade;
+    }
+
+    std::string getName() {
+        return name;
+    }
+
+    int getAge() {
+        return age;
+    }
+
+    double getAverageGrade() {
+        return averageGrade;
+    }
+
+    void printInfo() {
+        std::cout << "Name: " << name << std::endl;
+        std::cout << "Age: " << age << std::endl;
+        std::cout << "Average grade: " << averageGrade << std::endl;
+    }
+};
+
+int main() {
+    Student s;
+    s.setName("Bobrito Bandito");
+    s.setAge(23);
+    s.setAverageGrade(96.5);
+
+    s.printInfo();
+
+    return 0;
+}
