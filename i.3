@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+
+class Book {
+private:
+    std::string title;
+    std::string author;
+    std::string genre;
+    int year;
+
+public:
+    void setTitle(const std::string& newTitle) {
+        title = newTitle;
+    }
+
+    void setAuthor(const std::string& newAuthor) {
+        author = newAuthor;
+    }
+
+    void setGenre(const std::string& newGenre) {
+        genre = newGenre;
+    }
+
+    void setYear(int newYear) {
+        year = newYear;
+    }
+
+    std::string getTitle() {
+        return title;
+    }
+
+    std::string getAuthor() {
+        return author;
+    }
+
+    std::string getGenre() {
+        return genre;
+    }
+
+    int getYear() {
+        return year;
+    }
+
+    void printInfo() {
+        std::cout << "Title: " << title << std::endl;
+        std::cout << "Author: " << author << std::endl;
+        std::cout << "Genre: " << genre << std::endl;
+        std::cout << "Year: " << year << std::endl;
+    }
+};
+
+int main() {
+    Book b;
+    b.setTitle("Green Mile");
+    b.setAuthor("Stephen King");
+    b.setGenre("Horror Fiction");
+    b.setYear(1996);
+
+    b.printInfo();
+
+    return 0;
+}
